@@ -2,13 +2,16 @@ require('dotenv').config()
 
 const express = require('express')
 const cors = require('cors')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const app = express()
-const PORT = 3000
+const sequelize = require('./config/db')
+const models = require('./models/models')
+const router = require('./routes/routes')
 
+const PORT = process.env.PORT
+
+const app = express()
 app.use(express.json())
 app.use(cors({origin: '*'}))
+app.use('/api', router)
 
 async function start() {
     try {
