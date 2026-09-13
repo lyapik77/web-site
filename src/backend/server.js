@@ -10,10 +10,10 @@ const PORT = process.env.PORT
 
 const app = express()
 app.use(express.json())
-app.use(cors({origin: '*'}))
+app.use(cors())
 app.use('/api', router)
 
-async function start() {
+async function start() {    
     try {
         await sequelize.authenticate()
         await sequelize.sync()
