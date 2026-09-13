@@ -14,8 +14,9 @@ class UserController {
             return res.status(404).json({ message: 'Такой пользователь уже существует' })
         }
         const hashPassword = await bcrypt.hash(password, 8)
+        const username = req.body.name_user.charAt(0).toUpperCase() + name_user.slice(1)
         const new_user = await Users.create({
-            name_user,
+            name_user: username,
             email,
             password: hashPassword,
             role
@@ -62,6 +63,53 @@ class UserController {
         const token = generateJwt(req.Users.id, req.Users.email, req.Users.role )
         return res.json({token})
     }
+
+    async findAll(req,res) {
+        try {
+            const user = await Users.findAll()
+            return res.send(user)
+        } catch(error) {
+            res.status(404).json({
+                message: 'Ресурс не найден'
+            })
+        }
+    }
+
+
+    async findEmail(req,res) {
+        try {
+            const { email } = req.body
+            const candidate = await Users.findOne({where: {email} })
+            if(!candidate) {
+                res.status(404).json({
+                    message: 'Пользователь не найден'
+                })
+            }
+            return res.status(201).send(candidate)
+        } catch(error) {
+             res.status(404).json({
+                message: 'Ресурс не найден'
+            })
+        }
+    }
+
+
+    async deleteUser(req,res) {
+        try {
+            const { id } = req.params
+            const candidate = await Users.findByPk(id)
+            await candidate.destroy()
+            return res.status(200).json ({
+                message: 'Пользователь успешно удален'
+            })
+        } catch(error) {
+            return res.status(404).json ({
+                message: 'Ошибка в удалении пользователя'
+            })
+        }
+    }
 }
+
+
 
 module.exports = new UserController()
