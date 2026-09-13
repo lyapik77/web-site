@@ -31,6 +31,10 @@ const Product = sequelize.define('Product', {
 
 const Purchases = sequelize.define('Purchases', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    title: { type: DataTypes.STRING },
+    itemsCount: { type: DataTypes.INTEGER, defaultValue: 1 },
+    total: { type: DataTypes.DECIMAL, defaultValue: 0 },
+    status: { type: DataTypes.STRING, defaultValue: 'pending' },
 }, {
     updatedAt: false  
 })

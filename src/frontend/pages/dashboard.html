@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Личный кабинет</title>
+  <link rel="stylesheet" href="../styles/registration.css" />
+  <link rel="stylesheet" href="../styles/dashboard.css" />
+</head>
+<body>
+  <div class="dashboard">
+
+    <!-- Шапка -->
+    <header class="dashboard-header">
+      <div>
+        <p class="greeting" id="greeting">Добро пожаловать!</p>
+        <h1 class="username" id="username">—</h1>
+      </div>
+      <button type="button" class="btn-logout" id="logoutBtn">Выйти</button>
+    </header>
+
+    <!-- Баллы -->
+    <section class="points-card">
+      <div class="points-label">Ваши баллы</div>
+      <div class="points-value" id="pointsValue">0</div>
+      <div class="points-hint">1 балл = 1 ₽ скидки на следующий заказ</div>
+    </section>
+
+    <!-- Заказы -->
+    <section class="orders-section">
+      <div class="orders-header">
+        <h2>Мои заказы</h2>
+        <span class="orders-count" id="ordersCount">0</span>
+      </div>
+
+      <div class="orders-list" id="ordersList">
+        <!-- сюда рендерятся заказы через JS -->
+      </div>
+
+      <p class="orders-empty" id="ordersEmpty" hidden>
+        У вас пока нет заказов
+      </p>
+    </section>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../app/dashboard.js"></script>
+</body>
+</html>
