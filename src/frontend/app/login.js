@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:4000/api/user/login'; // ← поменяй под свой бек
+const API_URL = 'http://localhost:3000/api/user/login'; // ← поменяй под свой бек
 
 const form = document.getElementById('loginForm');
 const submitBtn = document.getElementById('submitBtn');

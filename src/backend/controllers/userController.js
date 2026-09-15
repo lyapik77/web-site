@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { Users, Basket, Bonus } = require('../models/models');
-const ApiError = require('../error/ApiError');
 
 // Общая функция выпуска токена — используется в registration, login и check
 function generateJwt(id, email, role) {

@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:4000/api/user/registration';
+const API_URL = 'http://localhost:3000/api/user/registration';
 
 const form = document.getElementById('registerForm');
 const submitBtn = document.getElementById('submitBtn');
